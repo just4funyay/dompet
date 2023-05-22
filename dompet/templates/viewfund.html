@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>View Fund</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+	{%load static%}<link rel="icon" href="{%static 'media/LOGO_nav.png'%}" type="image/x-icon">
+    <style>
+
+/* CSS untuk Navbar */
+.navbar {
+    padding-top: 2.5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: #7454BB; /* Warna latar belakang */
+    color: #ffff; /* Warna teks */
+}
+
+.navbar-brand {
+    margin-right: 10px;
+    color: #ffff; /* Warna teks */
+}
+.navbar-brand:hover{
+    color: #0F101F;
+}
+
+.navbar-nav .nav-link {
+    margin-right: 10px;
+    color: #ffff; /* Warna teks */
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+}
+
+
+.btn-1 {
+    width: 100px;
+    margin-left: 10px;
+    background: #0F101F;
+    border-radius: 25px;
+    border-color: #ffffff;
+    color: #ffff;
+}
+
+.btn-1:hover {
+    background: #5a428c;
+    color: #ffff;
+}
+
+.d-flex.align-items-center {
+    margin-left: auto;
+}
+
+/* CSS untuk Logo */
+.logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+/* CSS untuk Navbar */
+
+/* Button FUND & ADD FUND */
+.btn-2 {
+    margin-left: 50px;
+    margin-top: 20px;
+    background: #0F101F;
+    border-radius: 25px;
+    color: #ffff;
+    width: 150px; /* Ubah ukuran lebar sesuai kebutuhan Anda */
+    height: 40px; /* Ubah ukuran tinggi sesuai kebutuhan Anda */
+}
+
+.btn-left {
+  margin-right: 10px; /* Ubah jarak antara button kiri dan button kanan sesuai kebutuhan Anda */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25); /* Atur warna, ukuran, dan posisi bayangan */
+}
+
+.btn-text {
+    font-style: italic;
+    font-weight: 350;
+}
+
+.card-group {
+    display: flex;
+    flex-direction: column;
+    width: 90%; /* Atur lebar card-group sesuai kebutuhan */
+    margin-left: 50px;
+    margin-top: 10px;
+    border-radius: 20px; /* Ubah nilai border radius sesuai kebutuhan */
+    overflow: hidden; /* Menghindari overflow jika border radius diterapkan */
+    border: 1px solid #5a428c; /* Ganti dengan warna border dan ketebalan yang diinginkan */
+}
+
+.card-header {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background-color: #5a428c; /* Ganti dengan warna latar belakang yang diinginkan */
+    padding: 10px;
+    border-radius: 20px 20px 0 0; /* Ubah nilai border radius sesuai kebutuhan */
+}
+
+.card-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inner-card {
+    flex-basis: 100%; /* Atur lebar masing-masing card sesuai kebutuhan */
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-container-1 {
+    display: flex;
+    margin-top: 10px;
+}
+
+.btn-3 {
+    padding: 5px 10px;
+    margin-left: 25px;
+    background-color: #e1e1e1;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 250px;
+    background: #e1e1e1;
+    color: black;
+    border-radius: 20px;
+    border-color: #5a428c;
+}
+
+.btn-3:hover {
+    background-color: #5a428c;
+    color: #ffffff;
+}
+
+.btn-4 {
+    padding: 5px 10px;
+    background-color: #e1e1e1;
+    border: none;
+    border-radius: 4px;
+    margin-left: -30px;
+    cursor: pointer;
+    width: 275px;
+    background: #7454BB;
+    color: #ffffff;
+    border-radius: 20px;
+    border-color: #5a428c;
+}
+
+.btn-4:hover {
+    background-color: #5a428c;
+}
+
+.btn-5 {
+    width: 500px;
+    height: 40px;
+    margin-left: 25px;
+    background: #7454BB;
+    color: #ffffff;
+    border-radius: 20px;
+}
+.text-1{
+    font-size: 25px;
+    margin-left: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.text-2{
+    font-size: 15px;
+    margin-left: 25px;
+    padding-bottom: 10px;
+    width: 495px;
+}
+.text-3{
+    font-size: 25px;
+    margin-left: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.text-4{
+    font-size: 15px;
+    margin-left: 25px;
+    padding-bottom: 10px;
+    width: 495px;
+}
+.text-5{
+    font-size: 25px;
+    margin-left: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.text-6{
+    font-size: 15px;
+    margin-left: 25px;
+    padding-bottom: 10px;
+    width: 495px;
+}
+.text-7{
+    margin-left: 25px;
+}
+.text-8{
+    display: flexbox;
+    margin-left: 25px;
+    margin-top: 15px;
+    font-size: 15px;
+    padding-bottom: 10px;
+    width: 495px;
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home">
+            {%load static%}<img src="{%static '/media/LOGO_nav.png'%}" alt="Logo" class="logo">
+            MoneyPocket
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/calender">Calendar</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/chart">Statistic</a>
+                </li>
+                    </ul>
+            <div class="d-flex align-items-center">
+                <span class="mr-2">Hi, Welcome {{user.username}}</span>
+                <a href="/logout">
+                    <button class="btn-1">Log Out</button>
+                </a>
+            </div>
+            </div>
+        </div>
+        </nav>
+    <!-- Navbar end -->
+    <!-- content start -->
+    <div>
+        <button id="fundButton" type="submit" class="btn-2 btn-left">Fund: RP.99999</button>
+        <span class="btn-text">View Fund</span>
+    </div>
+    <div class="card-group">
+        <div class="card-header">Fund</div>
+        <div class="card-1">
+        <div class="inner-card left-card">
+            <button class="btn-5">{{fund.0.kategori}}</button>
+            <div>
+            <p class="text-1">Tanggal: </p>
+            <p class="text-2" style="border: none; border-bottom: 1px solid #0F101F; background-color: transparent; border-radius: 0%;">{{fund.0.Tanggal}}</p>
+            <p class="text-3">Jumlah: </p>
+            <p class="text-4" style="border: none; border-bottom: 1px solid #0F101F; background-color: transparent; border-radius: 0%;">{{fund.0.Jumlah}}</p>
+            <p class="text-5">Deskripsi: </p>
+            <p class="text-6" style="border: none; border-bottom: 1px solid #0F101F; background-color: transparent; border-radius: 0%;">{{fund.0.Deskripsi}}</p>
+            </div>
+        </div>
+        <div class="inner-card right-card">
+            <h3 class="text-7">Catatan</h3>
+            <p class="text-8" style="border: none; border-bottom: 1px solid #0F101F; background-color: transparent; border-radius: 0%;">{{fund.0.Catatan}}</p>
+            <div class="button-container-1">
+                <button class="btn-3">Hapus</button>
+                <button class="btn-4">Edit</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

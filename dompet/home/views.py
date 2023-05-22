@@ -25,6 +25,9 @@ def Deletedata(request, fund_id):
 def EditData(request, fund_id):
      link = Fundmodel.objects.get(id=fund_id)
      fund = Fundmodel.objects.filter(id=fund_id).all()
+     for x in fund:
+          if x.kategori == "Pengeluaran":
+               x.Jumlah=(-1)*(x.Jumlah)
      if request.method == "POST":
           kat = request.POST.get('kate')
           keluar=int(request.POST.get('duid'))
@@ -43,4 +46,4 @@ def EditData(request, fund_id):
                link.save()
           return redirect(Homepage)
      context={'link':link,'fund':fund}
-     return render(request,'fund.html',context)
+     return render(request,'viewfund.html',context)

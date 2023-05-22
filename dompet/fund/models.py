@@ -8,6 +8,7 @@ class Fundmodel(models.Model):
     Tanggal = models.DateField()
     Jumlah = models.IntegerField(default=0)
     Deskripsi = models.TextField()
+    Catatan = models.TextField(blank=True)
     milik = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:

@@ -5,15 +5,15 @@ from reglog import views as reglogviews
 from home import views as homeviews
 import datetime
 from django.views import View
-import sys
+from django.db.models import Sum
 import calendar
+from django.contrib.auth.decorators import login_required
 
-            
+@login_required(login_url='/login')    
 def fundpage(request):
-    fundform = fundForm()
+    jumlahnya = Fundmodel.objects.filter(milik_id=request.user.id).aggregate(Sum('Jumlah',default=0))
     if request.method == 'POST':
         
-        if fundform.is_valid:
                 kat = request.POST.get('kate')
                 keluar=int(request.POST.get('duid'))
                 if kat == 'Pengeluaran':     
@@ -22,6 +22,7 @@ def fundpage(request):
                      Tanggal=request.POST.get('tangal'),
                      Jumlah=(-1)*keluar,
                      Deskripsi=request.POST.get('desc'),
+                     Catatan=request.POST.get('catatan'),
                      milik_id=request.user.id)
                     masuk.save()
                 elif kat=='Pemasukan':
@@ -30,16 +31,19 @@ def fundpage(request):
                      Tanggal=request.POST.get('tangal'),
                      Jumlah=request.POST.get('duid'),
                      Deskripsi=request.POST.get('desc'),
+                     Catatan=request.POST.get('catatan'),
                      milik_id=request.user.id)
                      masuk.save()
                 return redirect(homeviews.Homepage)
     else:
         fundform = fundForm()
-    return render(request,'fund.html',{'fundform':fundform})
+    return render(request,'fundd.html',{'jumlahnya':jumlahnya})
 
 def Editform(request, fund_id):
      fund = Fundmodel.objects.get(pk=fund_id)
      return render(request,'fund/<int:>')
+
+@login_required(login_url='/login') 
 def stats(request):
      labels=[]
      data1 = []
