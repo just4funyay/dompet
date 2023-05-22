@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund</title>
+    
+</head>
+<body>
+    <h2>FUND</h2><br>
+    <form method="POST">
+        {% csrf_token %}
+        {%block content%}
+        <label>Kategori</label><br>
+        
+        <!--<select name="kate">
+            <option name="pengeluaran" >Pengeluaran</option>
+            <option name="pemasukan">Pemasukan</option>
+        </select><br>-->
+        <input type="radio" name="kate" value="Pengeluaran">Pengeluaran
+        <input type="radio" name="kate" value="Pemasukan">Pemasukan<br>
+        <label>Date</label><br>
+        <input type="date" name="tangal" placeholder="YYYY-MM-DD" value="{{fund.0.Tanggal}}"><br>
+        <label>Jumlah</label><br>
+        <input type="number" name="duid" value="{{fund.0.Jumlah}}"><br>
+        <label>Deskripsi</label><br>
+        <input type="text" name="desc"value="{{fund.0.Deskripsi}}"><br>
+        <p></p>
+        {%endblock%}
+        <button type="submit">Simpan</button>
+        
+    </form>
+</body>
+</html>

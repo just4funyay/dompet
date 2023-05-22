@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{%load static%}
+	<title>Login Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+	<link rel="icon" href="{%static 'regis/LOGO1.png' %}" type="image/x-icon">
+	<style>
+		.card {
+			margin: auto;
+			margin-top: auto;
+			margin-bottom: auto;
+			float: none;
+			border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding-left: 10px;
+			padding-right: 10px;
+			border-color: #7353BA;
+
+			box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
+		}
+		.card-body{
+			margin-top: auto;
+			margin-bottom: 15px;
+			margin-left: auto ;
+			margin-right: auto;
+		}
+		.card-img{
+			margin: auto;
+			max-width: 150px;
+			margin-top: 15px;
+			margin-bottom: 30px;
+		}
+		.btn-1 {
+			margin:auto;
+			margin-top: 15px;
+			float: none;
+			display: flex;
+			width: 300px;
+			justify-content: center;
+			color: #F7F4F3;
+			border-color: #301A61;
+			
+			background: #7353BA;
+			border-radius: 20px;
+		}
+		.btn-1:hover {
+  		background: #5a428c; /* Ganti warna sesuai keinginan Anda */
+		color: #F7F4F3;
+		}
+		.btn-secondary{
+			margin:auto;
+			margin-top: 15px;
+			float: none;
+			display: flex;
+			width: 300px;
+			justify-content: center;
+			color: #301A61;
+			border-color: #301A61;
+			
+			border-radius: 20px;
+			background: white;
+		}
+		.btn-secondary:hover {
+  		background: #301A61; /* Ganti warna sesuai keinginan Anda */
+		}
+		.text{
+			margin: auto;
+			align-items: center;
+			font-size: 14px;
+			margin-bottom: 30px;
+			text-align: center;
+			/* padding-left: 10px;
+			padding-right: 10px; */
+		}
+		.text-inf{
+			margin: auto;
+			margin-top: 15px;
+			width: 300px;
+			font-size: 12px;
+			align-items: center;
+			justify-content: center;
+			display: flex;
+			color: #301A61;
+			font-style: italic;
+		}
+		.form-group{
+			margin: auto;
+			margin-block-end: 10px;
+			width: 300px;
+		}
+		.form-control{
+			font-size: 14px;
+			font-style: italic;
+			display: flex;
+			border-radius: 10px;
+			
+			background: #F7F4F3;
+			border: 1.5px solid #7454BB;
+		}
+	</style>
+</head>
+<body>
+	<div class="container mt-5">
+		<div class="row justify-content-md-center">
+			<div class="col-md-5">
+				<div class="card">
+					<div class="card-group">
+						{%load static%}
+						<img src="{%static 'regis/LOGO1.png' %}" class="card-img" alt="...">
+					</div>
+					<div class="text">"Menabunglah untuk masa depan yang lebih <br> cerah dan aman."</div>
+					<div class="card-body">
+						<form method="post">
+							{% csrf_token %}
+							<div class="form-group">
+								<input type="text-1" class="form-control" id="username" name="username" placeholder="Username">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+							</div>
+							<div class="text-inf"> Forgot your password?</div>
+							<div>
+								<button type="submit" class="btn btn-1" >Log in</button>
+							</div>
+							<div>
+								<a href="../"
+									<button type="submit" class="btn btn-secondary">Register</button>
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

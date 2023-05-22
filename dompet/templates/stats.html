@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  
+  <a href="/home">Home</a>
+  <a href="/fund">Fund</a><br><br>
+  <h2>{{month}},{{year}}</h2>
+  <form method="post">
+    {%csrf_token%}
+      <select name="bulan">
+        <option name="jan">Jan</option>
+        <option name="feb">Feb</option>
+        <option name="mar">Mar</option>
+        <option name="apr">Apr</option>
+        <option name="may">May</option>
+        <option name="june">Jun</option>
+        <option name="july">Jul</option>
+        <option name="aug">Aug</option>
+        <option name="sept">Sep</option>
+        <option name="oct">Oct</option>
+        <option name="nov">Nov</option>
+        <option name="des">Dec</option>
+      </select> 
+    <input type="number" placeholder="YYYY" min="1900" max="2100" value="2023" name="tahun">
+    <button type="submit">Load</button>
+  </form>
+  
+    <h1>{{cek}}</h1>
+    <h2>{{kata2}}</h2>
+    <div style="position: right; height:50vh; width:50vw;">
+    <canvas id="myChart"></canvas>
+    <script>
+        const ctx = document.getElementById('myChart');
+        var mydata1="{{data1.0}}";
+        var mydata2 = "{{data2.0}}";
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Pemasukan {{month}},{{year}}','Pengeluaran {{month}},{{year}}'],
+            datasets: [{
+              label: 'Rp',
+              data: [mydata1,mydata2],
+              backgroundColor: ["#7454BB","#301A61"],
+              borderWidth: 0
+            }]
+          }
+        });
+      </script>
+      </div>
+      <h2>{{data1.0}}</h2>
+      <h2>{{data2.0}}</h2>
+
+</body>
+</html>

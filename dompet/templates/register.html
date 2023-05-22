@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Selamat datang</h1><br>
+    <h2>Register</h2><br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>signup</h3>
+        <label for="uname">Username</label>
+        <input type="text" id="uname" name="uname"><br>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"><br>
+        <label for="passwordconfirm">Password Confirm</label>
+        <input type="password" id="password" name="passwordconfirm"><br>
+        <button type="submit">signup</button>
+    </form>
+    <p>Sudah punya akun?</p><a href="login/">Login</a>
+</body>
+</html>
