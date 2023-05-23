@@ -34,6 +34,7 @@ urlpatterns = [
     path('calender/',calenderviews.calenderPage,name='calender'),
     path('allfund/',calenderviews.allfund,name='calenderisi'),
     path('chart/',fundviews.stats,name="chartcalender"),
+    path('Viewfund/<int:fund_id>',homeviews.Viewfund,name="view"),
     
 ]
 urlpatterns += staticfiles_urlpatterns()

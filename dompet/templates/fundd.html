@@ -294,7 +294,7 @@
     <!-- Navbar end -->
     <!-- content start -->
     <div>
-        {%load humanize%}<button id="fundButton" type="submit" class="btn-2 btn-left">Fund: Rp.{{jumlahnya.Jumlah__sum|intcomma}}</button>
+        {%load humanize%}<button id="fundButton" type="submit" class="btn-2 btn-left">Fund: Rp.{{total.Jumlah__sum|intcomma}}</button>
         <span class="btn-text">Add Fund</span>
     </div>
     <form method="post">
@@ -303,17 +303,26 @@
         <div class="card-header">Fund</div>
         <div class="card-1">
         <div class="inner-card left-card">
+            {% if fund.0.kategori == "Pengeluaran"%}
             <div class="container-btn-radio">
-                <input type="radio" class="btn-check" id="btn-check-outlined" name="kate" value="Pengeluaran" autocomplete="off">
+                <input type="radio" class="btn-check" id="btn-check-outlined" name="kate" value="Pengeluaran" checked>
                 <label class="btn btn-outline-secondary" for="btn-check-outlined">- Pengeluaran</label>
-                <input type="radio" class="btn-check" id="btn-check-2-outlined" name="kate" value="Pemasukan" checked autocomplete="off">
+                <input type="radio" class="btn-check" id="btn-check-2-outlined" name="kate" value="Pemasukan">
                 <label class="btn btn-outline-secondary" for="btn-check-2-outlined">+ Pemasukan</label>
-            </div>                                   
+            </div>
+            {% elif fund.0.kategori == "Pemasukan" %}                               
+            <div class="container-btn-radio">
+                <input type="radio" class="btn-check" id="btn-check-outlined" name="kate" value="Pengeluaran" >
+                <label class="btn btn-outline-secondary" for="btn-check-outlined">- Pengeluaran</label>
+                <input type="radio" class="btn-check" id="btn-check-2-outlined" name="kate" value="Pemasukan" checked>
+                <label class="btn btn-outline-secondary" for="btn-check-2-outlined">+ Pemasukan</label>
+            </div>      
+            {% endif %}
             <div>
             <p class="text-1">Tanggal: </p>
             <div class="container-1">
                 <div class="form-group">
-                    <input type="date" name="tangal" class="form-control" id="datepicker" style="border: none; border-bottom: 1px solid #0F101F; background-color: transparent; border-radius: 0%;">
+                    <input type="date" value="{{fund.0.Tanggal|date:'Y-m-d'}}" name="tangal" class="form-control" id="datepicker" style="border: none; border-bottom: 1px solid #0F101F; background-color: transparent; border-radius: 0%;">
                     </div>
                 </div>
             <p class="text-3">Jumlah: </p>
@@ -322,7 +331,7 @@
                     <div class="col-md-7">
                         <div class="input-group">
                         <span style="border: none; border-bottom: 1px solid #0F101F; background-color: transparent; border-radius: 0%;" class="input-group-text">RP. </span>
-                        <input name="duid" style="border: none; border-bottom: 1px solid #0F101F ;  border-radius: 0%;" type="number" class="form-control" id="inputAngka " placeholder="Masukkan Jumlah Uang Anda">
+                        <input name="duid" value="{{fund.0.Jumlah}}" style="border: none; border-bottom: 1px solid #0F101F ;  border-radius: 0%;" type="number" class="form-control" id="inputAngka " placeholder="Masukkan Jumlah Uang Anda">
                         </div>
                     </div>
                     </div>
@@ -332,7 +341,7 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="input-group">
-                        <input name="desc" style="border: none; border-bottom: 1px solid #0F101F ;  border-radius: 0%;" type="text" class="form-control" id="inputAngka" placeholder="Deskripsi Keuangan Anda">
+                        <input name="desc" value="{{fund.0.Deskripsi}}" style="border: none; border-bottom: 1px solid #0F101F ;  border-radius: 0%;" type="text" class="form-control" id="inputAngka" placeholder="Deskripsi Keuangan Anda">
                         </div>
                     </div>
                     </div>
@@ -345,7 +354,7 @@
                 <div class="row">
                     <div class="col-md-11">
                         <div class="form-group">
-                        <textarea name="catatan" class="form-control" id="inputCatatan" rows="4" style="border: none; border: 1px solid #0F101F ;  border-radius: 30px; padding: 20px;"></textarea>
+                        <textarea name="catatan" value="{{fund.0.Catatan}}" class="form-control" id="inputCatatan" rows="4" style="border: none; border: 1px solid #0F101F ;  border-radius: 30px; padding: 20px;"></textarea>
                         </div>
                     </div>
                     </div>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Main Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="icon" href="Assets/LOGO_nav.png" type="image/x-icon">
+    <style>
+        /* CSS untuk Navbar */
+        .navbar {
+            padding-top: 2.5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            background-color: #7454BB; /* Warna latar belakang */
+            color: #ffff; /* Warna teks */
+        }
+
+        .navbar-brand {
+            margin-right: 10px;
+            color: #ffff; /* Warna teks */
+        }
+        .navbar-brand:hover{
+            color: #0F101F;
+        }
+
+        .navbar-nav .nav-link {
+            margin-right: 10px;
+            color: #ffff; /* Warna teks */
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: bold;
+        }
+
+        .btn-1 {
+            width: 100px;
+            margin-left: 10px;
+            background: #0F101F;
+            border-radius: 25px;
+            border-color: #ffffff;
+            color: #ffff;
+        }
+
+        .btn-1:hover {
+            background: #5a428c;
+            color: #ffff;
+        }
+
+        .d-flex.align-items-center {
+            margin-left: auto;
+        }
+
+        /* CSS untuk Logo */
+        .logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+        }
+        /* CSS untuk Navbar */
+
+        /* Button FUND & ADD FUND */
+        .btn-2 {
+            margin-left: 50px;
+            margin-top: 20px;
+            background: #0F101F;
+            border-radius: 25px;
+            color: #ffff;
+            width: 150px; /* Ubah ukuran lebar sesuai kebutuhan Anda */
+            height: 40px; /* Ubah ukuran tinggi sesuai kebutuhan Anda */
+        }
+
+        .btn-left {
+            margin-right: 10px; /* Ubah jarak antara button kiri dan button kanan sesuai kebutuhan Anda */
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25); /* Atur warna, ukuran, dan posisi bayangan */
+        }
+
+        .btn-right {
+            margin-left: 10px; /* Ubah jarak antara button kanan dan button kiri sesuai kebutuhan Anda */
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25); /* Atur warna, ukuran, dan posisi bayangan */
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            margin-left: 50px;
+            margin-right: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            border: 1px solid #7454BB;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-1 {
+            position: relative;
+            width: 400px;
+            height: 178px;
+            background: #ffffff;
+            border-radius: 10px;
+            margin-left: 15px;
+            border-right: 1px solid #7454BB; /* Atur warna dan ketebalan garis */
+        }
+
+        .card-content-1 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .day {
+            font-family: 'Gotham';
+            font-weight: 400;
+            font-size: 100px;
+            line-height: 120px;
+            color: #0F101F;
+            margin-right: 30px;
+        }
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .date {
+            font-family: 'Gotham';
+            font-weight: 300;
+            font-size: 36px;
+            line-height: 43px;
+            color: #0F101F;
+            margin-bottom: 10px;
+        }
+
+        .month {
+            font-family: 'Gotham';
+            font-weight: 325;
+            font-size: 36px;
+            line-height: 43px;
+            color: #0F101F;
+            margin-bottom: 10px;
+        }
+
+        .card-2 {
+            position: absolute;
+            right: -180%; /* Mengatur posisi ke sisi kanan */
+            top: 50%; /* Mengatur posisi vertikal */
+            transform: translateY(-50%);
+            /* Gunakan class dan properti CSS sesuai dengan kebutuhan */
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            margin-left: 5px;
+            margin-right: 5px; /* Menyesuaikan jarak antara card-1 dan card-2 */
+        }
+
+        .card-2 .title {
+            font-family: 'Gotham';
+            font-style: normal;
+            font-weight: 350;
+            font-size: 30px;
+            line-height: 48px;
+            /* PURPLE BOLD */
+            color: #0F101F;
+            grid-column: 1;
+            text-align: left;
+        }
+
+        .card-2 .amount {
+            font-family: 'Gotham';
+            font-style: normal;
+            font-weight: 350;
+            font-size: 35px;
+            line-height: 5px;
+            /* PURPLE HIGH */
+            color: #7454BB;
+            grid-column: 2;
+            text-align: left;
+            margin-left: 100px;
+            margin-top: 45px;
+        }
+
+        .card-2 .description {
+            font-family: 'Gotham';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 25px;
+            line-height: 43px;
+            /* PURPLE BOLD */
+            color: #0F101F;
+            grid-column: 1;
+            text-align: left;
+        }
+
+        .card-2 .button-container {
+            grid-column: 1 / 2;
+            text-align: left;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card-2 .button {
+            padding: 7px 140px;
+            background-color: #7454BB;
+            color: #fff;
+            border: none;
+            border-radius: 13px;
+            font-size: 15px;
+            cursor: pointer;
+            align-items: center;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="Assets/LOGO_nav.png" alt="Logo" class="logo">
+                MoneyPocket
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Statistic</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span class="mr-2">Hi, Welcome User</span>
+                    <button class="btn-1" type="submit">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navbar end -->
+
+    <!-- content start -->
+    <div>
+        <button id="fundButton" type="submit" class="btn-2 btn-left">Fund: RP.99999</button>
+        <button id="fundButton" type="submit" class="btn-2 btn-right">Add Fund +</button>
+    </div>
+
+    <div class="card-container">
+        <div class="card-1">
+            <div class="card-content-1">
+                <div class="day">08</div>
+                <div class="text-content">
+                    <h2 class="date">Sabtu</h2>
+                    <h1 class="month">Apr 2023</h1>
+                </div>
+            </div>
+            <div class="card-2">
+                <div class="title">Pemasukan</div>
+                <div class="amount">+Rp 1.500.000</div>
+                <div class="description">Description: Gaji bulanan</div>
+                <div class="button-container">
+                    <button class="button">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

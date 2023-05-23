@@ -86,9 +86,7 @@
 .doang {
     right: 10000px
 }
-
-
-.card-container, .card-container-1 {
+.card-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
@@ -100,6 +98,8 @@
             border: 1px solid #7454BB;
             box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         }
+
+        
         .card-container-1 .card-2 {
             position: absolute;
             right: 10%; /* Mengatur posisi ke sisi kanan */
@@ -111,24 +111,30 @@
             margin-left: 10px;
             margin-right: 20px; /* Menyesuaikan jarak antara card-1 dan card-2 */
         }
-.card-1 {
-    
-    width: 400px;
-    height: 178px;
-    background: #ffffff;
-    border-radius: 10px;
-    margin-left: 15px;
-    border-right: 1px solid #7454BB; /* Atur warna dan ketebalan garis */
-}
+        .card-1 {
+            position: relative;
+            width: 400px;
+            height: 178px;
+            background: #ffffff;
+            border-radius: 10px;
+            margin-left: 15px;
+            border-right: 1px solid #7454BB; /* Atur warna dan ketebalan garis */
+        }
 
-.card-content-1 {
-    
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .card-content-1 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+.card-2 .button-container {
+            grid-column: 1 / 2;
+            text-align: left;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
 
 .day {
     font-family: 'Gotham';
@@ -165,16 +171,17 @@
 }
 
 .card-2 {
-    position: relative;
-    right: 240px; /* Sesuaikan jarak dari sisi kanan */
-    top: 50%; /* Sesuaikan posisi vertikal */
-    transform: translateY(-50%);
-    /* Gunakan class dan properti CSS sesuai dengan kebutuhan */
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    margin-left: 10px;
-}
+            position: absolute;
+            right: -180%; /* Mengatur posisi ke sisi kanan */
+            top: 50%; /* Mengatur posisi vertikal */
+            transform: translateY(-50%);
+            /* Gunakan class dan properti CSS sesuai dengan kebutuhan */
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            margin-left: 5px;
+            margin-right: 5px; /* Menyesuaikan jarak antara card-1 dan card-2 */
+        }
 
 .card-2 .title {
     font-family: 'Gotham';
@@ -211,6 +218,24 @@
     color: #0F101F;
     grid-column: 1 / -1;
 }
+.card-2 .button-container {
+            grid-column: 1 / 2;
+            text-align: left;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card-2 .button {
+            padding: 7px 140px;
+            background-color: #7454BB;
+            color: #fff;
+            border: none;
+            border-radius: 13px;
+            font-size: 15px;
+            cursor: pointer;
+            align-items: center;
+            margin-top: 5px;
+        }
 
 
     </style>
@@ -263,21 +288,26 @@
             
     </div>
 {%for x in data%}
-    <div class="card-container">
-    <div class="card-1">
-        <div class="card-content-1">
+<div class="card-container">
+<div class="card-1">
+    <div class="card-content-1">
+        <div class="text-content">
             <h1 class="month">{{x.Tanggal}}</h1>
         </div>
-    </div> 
+    </div>
+    {%load humanize%}
     <div class="card-2">
         <div class="title">{{x.kategori}}</div>
-        <div class="amount">Rp.{{x.Jumlah|intcomma}}</div>
+        <div class="amount">Rp. {{x.Jumlah|intcomma}},-</div>
         <div class="description">Description: {{x.Deskripsi}}</div>
-        <a href="/delete/{{x.id}}"><button class="btn-1">delete</button></a>
-        <a href="/fund/{{x.id}}"><button class="btn-1">Edit</button></a>
-        
+        <div class="button-container">
+            <a href="/Viewfund/{{x.id}}">
+                <button class="button">Edit</button>
+            </a>
+        </div>
     </div>
-    </div>
+</div>
+</div>
 {%endfor%}
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -25,6 +25,7 @@ def Deletedata(request, fund_id):
 def EditData(request, fund_id):
      link = Fundmodel.objects.get(id=fund_id)
      fund = Fundmodel.objects.filter(id=fund_id).all()
+     total = Fundmodel.objects.filter(milik_id=request.user.id).aggregate(Sum('Jumlah',default=0))
      for x in fund:
           if x.kategori == "Pengeluaran":
                x.Jumlah=(-1)*(x.Jumlah)
@@ -45,5 +46,15 @@ def EditData(request, fund_id):
                link.Deskripsi = request.POST.get('desc')
                link.save()
           return redirect(Homepage)
-     context={'link':link,'fund':fund}
+     context={'link':link,'fund':fund,'fund_id':fund_id,'total':total}
+     return render(request,'fundd.html',context)
+
+def Viewfund(request, fund_id):
+     total = Fundmodel.objects.filter(milik_id=request.user.id).aggregate(Sum('Jumlah',default=0))
+     fund = Fundmodel.objects.filter(id=fund_id).all()
+     for x in fund:
+          if x.kategori == "Pengeluaran":
+               x.Jumlah=(-1)*(x.Jumlah)
+
+     context={'fund':fund,'fund_id':fund_id,'total':total}
      return render(request,'viewfund.html',context)
