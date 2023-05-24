@@ -68,7 +68,7 @@
     background: #0F101F;
     border-radius: 25px;
     color: #ffff;
-    width: 150px; /* Ubah ukuran lebar sesuai kebutuhan Anda */
+    width: 250px; /* Ubah ukuran lebar sesuai kebutuhan Anda */
     height: 40px; /* Ubah ukuran tinggi sesuai kebutuhan Anda */
 }
 
@@ -294,7 +294,7 @@
     <!-- Navbar end -->
     <!-- content start -->
     <div>
-        {%load humanize%}<button id="fundButton" type="submit" class="btn-2 btn-left">Fund: Rp.{{total.Jumlah__sum|intcomma}}</button>
+        {%load humanize%}<button id="fundButton" type="submit" class="btn-2 btn-left">Fund: Rp.{{jumlahnya.Jumlah__sum|intcomma}} {{total.Jumlah__sum|intcomma}}</button>
         <span class="btn-text">Add Fund</span>
     </div>
     <form method="post">
@@ -316,7 +316,14 @@
                 <label class="btn btn-outline-secondary" for="btn-check-outlined">- Pengeluaran</label>
                 <input type="radio" class="btn-check" id="btn-check-2-outlined" name="kate" value="Pemasukan" checked>
                 <label class="btn btn-outline-secondary" for="btn-check-2-outlined">+ Pemasukan</label>
-            </div>      
+            </div>
+            {% else %}
+            <div class="container-btn-radio">
+                <input type="radio" class="btn-check" id="btn-check-outlined" name="kate" value="Pengeluaran">
+                <label class="btn btn-outline-secondary" for="btn-check-outlined">- Pengeluaran</label>
+                <input type="radio" class="btn-check" id="btn-check-2-outlined" name="kate" value="Pemasukan">
+                <label class="btn btn-outline-secondary" for="btn-check-2-outlined">+ Pemasukan</label>
+            </div>     
             {% endif %}
             <div>
             <p class="text-1">Tanggal: </p>
@@ -354,7 +361,7 @@
                 <div class="row">
                     <div class="col-md-11">
                         <div class="form-group">
-                        <textarea name="catatan" value="{{fund.0.Catatan}}" class="form-control" id="inputCatatan" rows="4" style="border: none; border: 1px solid #0F101F ;  border-radius: 30px; padding: 20px;"></textarea>
+                        <textarea name="catatan" value="{{fund.0.Catatan}}" class="form-control" id="inputCatatan" rows="4" style="border: none; border: 1px solid #0F101F ;  border-radius: 30px; padding: 20px;">{{fund.0.Catatan}}</textarea>
                         </div>
                     </div>
                     </div>

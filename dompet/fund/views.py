@@ -48,11 +48,11 @@ def stats(request):
      labels=[]
      data1 = []
      data2 = []
-     kata2=""
      pengeluaran=0
      pemasukan=0
      month=datetime.datetime.now().month
      year=datetime.datetime.now().year
+     tahunn=int(datetime.datetime.now().year)
      if request.method == "POST":
           bulan = request.POST.get('bulan')
           year  = request.POST.get('tahun')
@@ -67,20 +67,17 @@ def stats(request):
                labels.append(fund.Tanggal.month)
                data1.append(int(pemasukan))
                data2.append(int(pengeluaran))
-          if pemasukan>pengeluaran:
-               kata2="bulan ini pemasukan lebih baik ayo tingkatkan lagi!"
-          elif pengeluaran>pemasukan:
-               kata2="bulan ini pengeluaran lebih besar dari pemasukan, ayo lebih hemat lagi!"
-          else:
-               kata2="bulan ini kamu belum input apapun"
           month= calendar.month_name[month]
-          return render(request,'stats.html',{
+          saldo = pemasukan+pengeluaran;
+          saldo = int(saldo)
+          return render(request,'statsss.html',{
                          'labels':labels,
                          'data1':data1,
                          'data2':data2,
                          'month':month,
                          'year':year,
-                         'kata2':kata2})
+                         'saldo':saldo,
+                         })
      query = Fundmodel.objects.filter(milik_id=request.user.id,Tanggal__month=month,Tanggal__year=year)
      for x in query:
           if x.kategori=="Pengeluaran":
@@ -91,20 +88,17 @@ def stats(request):
           labels.append(fund.Tanggal.month)
           data1.append(int(pemasukan))
           data2.append(int(pengeluaran))
-     if pemasukan>pengeluaran:
-               kata2="bulan ini pemasukan lebih baik ayo tingkatkan lagi!"
-     elif pengeluaran>pemasukan:
-               kata2="bulan ini pengeluaran lebih besar dari pemasukan, ayo lebih hemat lagi!"
-     else:
-          kata2="bulan ini kamu, tidak menginput apapun"
      month= calendar.month_name[month]
-     return render(request,'stats.html',{
+     saldo = pemasukan+pengeluaran;
+     return render(request,'statsss.html',{
           'labels':labels,
           'data1':data1,
           'data2':data2,
           'month':month,
           'year':year,
-          'kata2':kata2,
+          'tahunn':tahunn,
+          'saldo':saldo,
+          
           
      })
 
