@@ -289,12 +289,15 @@
         </a>
             
     </div>
-{%for x in data%}
+    
+{%for x in bulannn  %}
 <div class="card-container">
 <div class="card-1">
     <div class="card-content-1">
+        <div class="day">{{x.Tanggal__day}}</div>
         <div class="text-content">
-            <h1 class="month">{{x.Tanggal}}</h1>
+            <h2 class="date">{{x.Tanggal__month}}</h2>
+            <h1 class="month">{{x.Tanggal__year}}</h1>
         </div>
     </div>
     {%load humanize%}

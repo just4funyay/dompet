@@ -4,17 +4,18 @@ from django.db.models import Sum
 from fund.views import fundpage
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+import calendar
 @login_required(login_url='/login')
 def Homepage(request):
 
      jumlahnya = Fundmodel.objects.filter(milik_id=request.user.id).aggregate(Sum('Jumlah',default=0))
      data_list = Fundmodel.objects.filter(milik_id=request.user.id).all()
-     tahun=datetime.now().year
-     bulan=int(datetime.now().month)
+     bulannn = Fundmodel.objects.filter(milik_id=request.user.id).values('kategori','Jumlah','Tanggal__day','Tanggal__month','Tanggal__year','Deskripsi')
+     for x in bulannn:
+          x["Tanggal__month"]=calendar.month_abbr[int(x["Tanggal__month"])]
      context = {'jumlahnya':jumlahnya,
                 'data':data_list,
-                'tahun':tahun,
-                'bulan':bulan,
+                'bulannn':bulannn,
                 }
      return render(request,'index.html',context)
 

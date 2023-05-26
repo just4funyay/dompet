@@ -60,7 +60,7 @@ def stats(request):
           query = Fundmodel.objects.filter(milik_id=request.user.id,Tanggal__month=month,Tanggal__year=year)
           for x in query:
                if x.kategori=="Pengeluaran":
-                    pengeluaran=pengeluaran+((-1)*x.Jumlah)
+                    pengeluaran=pengeluaran+x.Jumlah
                else:
                     pemasukan=pemasukan+x.Jumlah
           for fund in query:
@@ -81,7 +81,7 @@ def stats(request):
      query = Fundmodel.objects.filter(milik_id=request.user.id,Tanggal__month=month,Tanggal__year=year)
      for x in query:
           if x.kategori=="Pengeluaran":
-               pengeluaran=pengeluaran+((-1)*x.Jumlah)
+               pengeluaran=pengeluaran+(x.Jumlah)
           else:
                pemasukan=pemasukan+x.Jumlah
      for fund in query:
@@ -97,9 +97,7 @@ def stats(request):
           'month':month,
           'year':year,
           'tahunn':tahunn,
-          'saldo':saldo,
-          
-          
+          'saldo':saldo, 
      })
 
 
