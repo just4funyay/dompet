@@ -14,14 +14,18 @@ def SignupPage(request):
         password1=request.POST.get('passwordconfirm')
         if password=='' and password1=='' and uname1=='' and email=='':
             messages.info(request, 'isi dengan lengkap')
-            return redirect(SignupPage)
+            string="*anda belum memasukkan apapun!"
+            return render(request,'reg.html',{'string':string})
         elif password!=password1:
-            print('password tidak sama')
-            return redirect(SignupPage)
+            string="*password tidak sama"
+            return render(request,'reg.html',{'string':string})
         elif password==password1:
-            myuser=User.objects.create_user(uname1,email,password)
-            myuser.save()
-            return redirect(LoginPage)
+            if User.objects.filter(username=uname1).exists():
+                return redirect(SignupPage)
+            else:
+                myuser=User.objects.create_user(uname1,email,password)
+                myuser.save()
+                return redirect(LoginPage)
             
 
     return render(request,'reg.html')
@@ -35,8 +39,8 @@ def LoginPage(request):
             auth.login(request,user)
             return redirect(homeviews.Homepage)
         else:
-            messages.info(request,'invalid username or password')
-            return redirect(LoginPage)
+            string="*Username atau Password salah"
+            return render(request,'log.html',{'string':string})
     return render(request,'log.html')
 def logout(request):
     auth.logout(request)

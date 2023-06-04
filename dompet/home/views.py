@@ -10,7 +10,7 @@ def Homepage(request):
 
      jumlahnya = Fundmodel.objects.filter(milik_id=request.user.id).aggregate(Sum('Jumlah',default=0))
      data_list = Fundmodel.objects.filter(milik_id=request.user.id).all()
-     bulannn = Fundmodel.objects.filter(milik_id=request.user.id).values('kategori','Jumlah','Tanggal__day','Tanggal__month','Tanggal__year','Deskripsi')
+     bulannn = Fundmodel.objects.filter(milik_id=request.user.id).order_by('-Tanggal').values('id','kategori','Jumlah','Tanggal__day','Tanggal__month','Tanggal__year','Deskripsi')
      for x in bulannn:
           x["Tanggal__month"]=calendar.month_abbr[int(x["Tanggal__month"])]
      context = {'jumlahnya':jumlahnya,

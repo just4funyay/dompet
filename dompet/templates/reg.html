@@ -26,6 +26,24 @@
         }
 
         .col-md-6 {
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* padding-left: 20px;
+            padding-right: 20px; */
+        }
+        .col-md-6{
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* padding-left: 20px;
+            padding-right: 20px; */
+        }
+        .reg{
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -75,7 +93,18 @@
             background: #5a428c; /* Ganti warna sesuai keinginan Anda */
             color: #F7F4F3;
         }
-
+        .text-inf{
+			margin: auto;
+			margin-top: 15px;
+			width: 300px;
+			font-size: 12px;
+			align-items: center;
+			justify-content: center;
+			display: flex;
+			color: #301A61;
+			font-style: italic;
+            color: #D0342C;
+		}
     </style>
 </head>
 
@@ -92,7 +121,7 @@
                     <p>"Menabunglah untuk masa depan yang lebih <br> cerah dan aman."</p>
                 </div>
                 <div class="col-md-6">
-                    <h5>Register</h5>
+                    <h5 class="reg">Register</h5>
                     <form class="form" method="post">
                     {% csrf_token %}
                     <div class="mb-3">
@@ -105,16 +134,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label" >Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Password" id="password">
+                        <input type="password" class="form-control" name="password" placeholder="Password" minlength="8" id="password">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password Confirm</label>
                         <input type="password" class="form-control" name="passwordconfirm" placeholder="Password Confirm" id="password">
                     </div>
+                    <div class="text-inf"> {{string}}</div>
                     <div> 
                         <button type="submit" class="btn btn-1">Daftar</button>
                         <p>Sudah punya akun?<a href="login/">Login disini</a></p>
                     </div>
+                    
                     </form>
                     
                 </div>
